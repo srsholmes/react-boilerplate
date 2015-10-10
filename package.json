@@ -1,13 +1,13 @@
 {
   "name": "react-boilerplate",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp styles && gulp scripts && http-server -p 1337 -s -o & gulp watch",
     "serve": "http-server"
   },
-  "author": "",
+  "author": "Simon Holmes",
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.5.6",
