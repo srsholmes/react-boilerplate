@@ -6,10 +6,6 @@ module.exports = {
     'src': './app/js/**/*.js',
     'dest': './public/js/'
   },
-  'images': {
-    'src': './app/images/**/*.{jpeg,jpg,png}',
-    'dest': './public/images/'
-  },
   'styles': {
     'src': './app/scss/**/*.scss',
     'dest': './public/css/'
