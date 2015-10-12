@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Helvetica', cursive;
+  // background: url('/assets/img/bg.jpg') no-repeat center center fixed;
+  // background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-color: white;
+}
+
+[app] {
+	width: 80%;
+	height: 100%;
+	margin: auto;
+	text-align: center;
+	padding-bottom: 5%;
+	padding-top: 5%;
+	max-width: 1000px;
+	overflow: hidden;
+  @media (max-width: $screen-sm-min) {
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+	}
+}

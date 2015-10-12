@@ -1,45 +1,31 @@
-/* line 1, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_typography.scss */
-p {
-  margin-bottom: 1em; }
+/* line 1, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
+* {
+  box-sizing: border-box; }
 
-/* line 5, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_typography.scss */
-.heading {
-  margin-bottom: 0.618em; }
-  /* line 8, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_typography.scss */
-  .heading.-large, h1 {
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 30px; }
-  /* line 14, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_typography.scss */
-  .heading.-medium, h2 {
-    font-size: 16px;
-    font-weight: normal;
-    line-height: 20px; }
-  /* line 20, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_typography.scss */
-  .heading.-small, h3 {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 13.33333px; }
-  /* line 26, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_typography.scss */
-  .heading.-smallest {
-    font-size: 10px;
-    font-weight: bold; }
+/* line 5, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Helvetica', cursive;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-color: white; }
 
-/* line 1, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/_base.scss */
-body {
-  font-family: Helvetica, sans-serif;
-  color: #333;
-  background-color: #eee;
-  padding: 20px; }
-
-/* line 1, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/elements/_header.scss */
-header {
-  height: 50px;
-  background: #eeeeee; }
-
-/* line 1, /Users/cabbio540/Sites/personal/react-boilerplate/app/styles/elements/_footer.scss */
-footer {
-  height: 50px;
-  background: #eeeeee; }
+/* line 16, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
+[app] {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 5%;
+  padding-top: 5%;
+  max-width: 1000px;
+  overflow: hidden; }
+  @media (max-width: 640px) {
+    /* line 16, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
+    [app] {
+      max-width: 100%;
+      width: 100%;
+      height: auto; } }
 
 /*# sourceMappingURL=sass */

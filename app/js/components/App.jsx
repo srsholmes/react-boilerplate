@@ -11,10 +11,14 @@ let App = React.createClass({
     Reflux.connect(Store)
   ],
 
+  onClick() {
+    Actions.headingClick();
+  },
+
   render(){
     return (
       <div>
-        <h1>Hello Boilerplate</h1>
+        <h1 onClick={this.onClick}>{this.state.opener}</h1>
       </div>
     )
   }

@@ -11,7 +11,7 @@ module.exports = {
     'dest': './public/images/'
   },
   'styles': {
-    'src': './app/styles/**/*.scss',
+    'src': './app/scss/**/*.scss',
     'dest': './public/css/'
   },
   'sourceDir': './app/',

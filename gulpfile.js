@@ -89,7 +89,7 @@ gulp.task('prod', function() {
 //Watch the sass files.
 gulp.task('watch', ['browserSync'], function() {
   // Scripts are watched by Watchify inside Browserify task
-  gulp.watch(config.styles.src, ['sass']);
+  gulp.watch(config.styles.src, ['styles']);
   //Start server.
   server();
 });

@@ -2,13 +2,36 @@ let React = require('react');
 let Reflux = require('reflux');
 let Actions = require('../actions/actions');
 
+import { LOCAL_STORAGE_KEY } from '../constants/constants';
+
+
 let Store = Reflux.createStore({
-//Set up multiple stores as triggers on this store affect
-//everything listening to them.
   listenables: [Actions],
 
   init() {
-    console.log('store init');
+    this.contents = {
+			opener: 'Hello Boilerplate',
+      dataValid: true
+    };
+    this._setupLocalStorage();
+  },
+
+  onHeadingClick() {
+    this.contents.opener = 'Heading Clicked';
+    this.trigger(this.contents);
+  },
+
+  _setupLocalStorage() {
+    let localStorageItem = localStorage.getItem(LOCAL_STORAGE_KEY);
+    localStorageItem === null || JSON.parse(localStorageItem).dataValid !== true ? localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(this.contents)) : this.contents = JSON.parse(localStorageItem);
+  },
+
+  _updateLocalStorage(obj) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(obj));
+  },
+
+  getInitialState() {
+  	return this.contents;
   }
 
 });
