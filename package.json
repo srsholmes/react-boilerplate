@@ -28,8 +28,7 @@
     "gulp-uglify": "^1.2.0",
     "http-server": "^0.8.0",
     "morgan": "^1.6.1",
-    "react": "^0.13.x",
-    "reflux": "^0.2.9",
+    "reflux": "^0.2.13",
     "react-router": "^1.0.0-rc1",
     "run-sequence": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
@@ -37,6 +36,8 @@
   },
   "dependencies": {
     "bluebird": "^2.9.30",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "whatwg-fetch": "^0.9.0"
   }
 }
