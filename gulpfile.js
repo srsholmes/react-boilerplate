@@ -1,25 +1,25 @@
 'use strict';
 
-var gulp         = require('gulp');
-var prefix       = require('gulp-autoprefixer');
-var gulpif       = require('gulp-if');
-var source       = require('vinyl-source-stream');
-var sass         = require('gulp-sass');
-var streamify    = require('gulp-streamify');
-var runSequence  = require('run-sequence');
-var sourcemaps   = require('gulp-sourcemaps');
-var rename       = require('gulp-rename');
-var watchify     = require('watchify');
-var browserify   = require('browserify');
-var babelify     = require('babelify');
-var uglify       = require('gulp-uglify');
-var browserSync  = require('browser-sync');
+var gulp         = require('gulp'),
+    prefix       = require('gulp-autoprefixer'),
+    gulpif       = require('gulp-if'),
+    source       = require('vinyl-source-stream'),
+    sass         = require('gulp-sass'),
+    streamify    = require('gulp-streamify'),
+    runSequence  = require('run-sequence'),
+    sourcemaps   = require('gulp-sourcemaps'),
+    rename       = require('gulp-rename'),
+    watchify     = require('watchify'),
+    browserify   = require('browserify'),
+    babelify     = require('babelify'),
+    uglify       = require('gulp-uglify'),
+    browserSync  = require('browser-sync'),
 
-//Server
-var server    = require('./gulp/server');
-//Utils
-var config        = require('./gulp/config');
-var handleErrors  = require('./gulp/handleErrors');
+    //Server
+    server       = require('./gulp/server'),
+    //Utils
+    config       = require('./gulp/config'),
+    handleErrors = require('./gulp/handleErrors');
 
 global.isProd = false;
 
