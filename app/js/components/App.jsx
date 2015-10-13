@@ -18,7 +18,8 @@ let App = React.createClass({
   render(){
     return (
       <div>
-        <h1 onClick={this.onClick}>{this.state.opener}</h1>
+        <h1 style={{background:'green'}} onClick={this.onClick}>{this.state.opener}</h1>
+        <h2>How are you today?</h2>
       </div>
     )
   }

@@ -5,7 +5,7 @@ var morgan  = require('morgan');
 var config        = require('./config');
 
 module.exports = function(error) {
-
+  console.log('Starting server....');
   var server = express();
     server.use(morgan('dev'));
     server.use(express.static(config.buildDir));
@@ -24,5 +24,4 @@ module.exports = function(error) {
       }
     });
     s.listen(config.serverport);
-
 };

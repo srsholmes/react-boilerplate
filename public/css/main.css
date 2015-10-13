@@ -11,7 +11,7 @@ html, body {
   height: 100%;
   background-color: white; }
 
-/* line 16, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
+/* line 20, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
 [app] {
   width: 80%;
   height: 100%;
@@ -22,7 +22,7 @@ html, body {
   max-width: 1000px;
   overflow: hidden; }
   @media (max-width: 640px) {
-    /* line 16, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
+    /* line 20, /Users/cabbio540/Sites/personal/react-boilerplate/app/scss/_base.scss */
     [app] {
       max-width: 100%;
       width: 100%;

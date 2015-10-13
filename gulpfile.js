@@ -14,52 +14,35 @@ var gulp         = require('gulp'),
     babelify     = require('babelify'),
     uglify       = require('gulp-uglify'),
     browserSync  = require('browser-sync'),
-
+    lrload       = require('livereactload'),
+    buffer       = require('vinyl-buffer'),
     //Server
     server       = require('./gulp/server'),
     //Utils
     config       = require('./gulp/config'),
     handleErrors = require('./gulp/handleErrors');
 
-global.isProd = false;
+var isProd = process.env.NODE_ENV === "production"
 
-// Build script based on https://github.com/jakemmarsh/react-rocket-boilerplate
-// and 
-// http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
-function buildScript(file, watch) {
-  var bundler = browserify({
-    entries: [config.sourceDir + 'js/' + file],
-    debug: !global.isProd,
-    cache: {},
-    packageCache: {},
-    fullPaths: true
-  });
-  if ( watch ) {
-    bundler = watchify(bundler);
-    bundler.on('update', rebundle);
-  }
-  bundler.transform(babelify);
-  function rebundle() {
-    var stream = bundler.bundle();
-    return stream.on('error', handleErrors)
-    .pipe(source(file))
-    .pipe(gulpif(global.isProd, streamify(uglify())))
-    .pipe(streamify(rename({
-      basename: 'main'
-    })))
-    .pipe(gulpif(!global.isProd, sourcemaps.write('./')))
-    .pipe(gulp.dest(config.scripts.dest))
-    .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
-  }
-  return rebundle();
-}
-
-gulp.task('browserify', function() {
-  // Only run watchify if NOT production
-  return buildScript('app.js', !global.isProd);
+var bundler = browserify({
+  entries:      [config.sourceDir + 'js/app.js'],
+  transform:    babelify,
+  plugin:       isProd ? [] : [ lrload ],
+  debug:        !isProd,
+  cache:        {},
+  packageCache: {},
+  fullPaths:    !isProd
 });
 
-//browserSync
+gulp.task('bundle:js', function() {
+  console.log(isProd);
+  bundler.bundle()
+          .pipe(source('main.js'))
+          .pipe(streamify(uglify()))
+          .pipe(gulp.dest(config.scripts.dest))
+});
+
+//browserSync for sass reload
 gulp.task('browserSync', function() {
   browserSync({
     proxy: 'localhost:' + config.serverport
@@ -70,9 +53,9 @@ gulp.task('browserSync', function() {
 gulp.task('styles', function () {
   return gulp.src(config.styles.src)
     .pipe(sass({
-      sourceComments: global.isProd ? 'none' : 'map',
+      sourceComments: isProd ? 'none' : 'map',
       sourceMap: 'sass',
-      outputStyle: global.isProd ? 'compressed' : 'nested'
+      outputStyle: isProd ? 'compressed' : 'nested'
     }))
     .pipe(prefix("last 2 versions", "> 1%", "ie 8"))
     .on('error', handleErrors)
@@ -80,18 +63,35 @@ gulp.task('styles', function () {
     .pipe(browserSync.reload({ stream: true }));
 });
 
-//Get app ready for production
-gulp.task('prod', function() {
-  global.isProd = true;
-  runSequence(['styles','browserify']);
+gulp.task('watch', ['browserSync'], function() {
+  gulp.watch(config.styles.src, ['styles']);
+  // start JS file watching and rebundling with watchify
+  var watcher = watchify(bundler)
+  rebundle()
+  return watcher
+    .on('error', handleErrors)
+    .on('update', rebundle)
+
+  function rebundle() {
+    console.log('JS bundle')
+    watcher
+      .bundle()
+      .on('error', handleErrors)
+      .pipe(source('main.js'))
+      .pipe(gulpif(isProd, streamify(uglify())))
+      .pipe(gulpif(!isProd, sourcemaps.write('./')))
+      .pipe(buffer())
+      .pipe(gulp.dest(config.scripts.dest))
+      // .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
+  }
 });
 
-//Watch the sass files.
-gulp.task('watch', ['browserSync'], function() {
-  // Scripts are watched by Watchify inside Browserify task
-  gulp.watch(config.styles.src, ['styles']);
-  //Start server.
+gulp.task('default', ['styles', 'bundle:js', 'watch'], function() {
+//Start server.
   server();
 });
 
-gulp.task('default', ['styles', 'browserify', 'watch']);
+//For production, just bundle the scss and js.
+gulp.task('prod', function() {
+  runSequence(['styles','bundle:js']);
+});

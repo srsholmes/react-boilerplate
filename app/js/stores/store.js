@@ -17,7 +17,7 @@ let Store = Reflux.createStore({
   },
 
   onHeadingClick() {
-    this.contents.opener = 'Heading changed from flux';
+    this.contents.opener = 'Heading Clicked from fluxer';
     this.trigger(this.contents);
   },
 
