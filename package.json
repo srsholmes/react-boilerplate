@@ -41,7 +41,6 @@
     "bluebird": "^2.9.30",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "envify": "3.4.0",  
     "whatwg-fetch": "^0.9.0"
   }
 }
