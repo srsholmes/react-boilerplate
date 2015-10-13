@@ -25,7 +25,7 @@ var isProd = process.env.NODE_ENV === "production"
 
 var bundler = browserify({
   entries:      [config.sourceDir + 'js/app.js'],
-  transform:    babelify,
+  transform:    babelify.configure({stage: 0}),
   plugin:       isProd ? [] : [ lrload ],
   debug:        !isProd,
   cache:        {},
