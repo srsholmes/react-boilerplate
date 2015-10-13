@@ -34,7 +34,6 @@ var bundler = browserify({
 });
 
 gulp.task('bundle:js', function() {
-  console.log(isProd);
   bundler.bundle()
           .pipe(source('main.js'))
           .pipe(streamify(uglify()))
