@@ -1,6 +1,6 @@
 # react-boilerplate
 A boilerplate using ReactJS, SASS, Gulp, and Browserify.
-The boilerplate features hot realoading using LiveReactload.
+The boilerplate features hot reloading using LiveReactload.
 ### Getting up and running
 
 1. Clone this repo from `git@github.com:srsholmes/react-boilerplate.git`
