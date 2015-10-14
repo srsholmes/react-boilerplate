@@ -1,4 +1,4 @@
-require('babelify/polyfill');
+// require('babelify/polyfill');
 import 'whatwg-fetch';
 
 let React = require('react');

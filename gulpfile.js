@@ -15,6 +15,7 @@ var gulp         = require('gulp'),
     browserSync  = require('browser-sync'),
     lrload       = require('livereactload'),
     buffer       = require('vinyl-buffer'),
+    uglifyify    = require('uglifyify'),
     //Server
     server       = require('./gulp/server'),
     //Utils
@@ -26,7 +27,7 @@ var isProd = process.env.NODE_ENV === "production"
 var bundler = browserify({
   entries:      [config.sourceDir + 'js/app.js'],
   transform:    babelify.configure({stage: 0}),
-  plugin:       isProd ? [] : [ lrload ],
+  // plugin:       [isProd ? [] : [ lrload ]],
   debug:        !isProd,
   cache:        {},
   packageCache: {},
@@ -36,9 +37,9 @@ var bundler = browserify({
 gulp.task('bundle:js', function() {
   bundler.bundle()
           .pipe(source('main.js'))
-          .pipe(streamify(uglify()))
           .pipe(gulp.dest(config.scripts.dest))
 });
+
 
 //browserSync for sass reload
 gulp.task('browserSync', function() {
@@ -80,11 +81,11 @@ gulp.task('watch', ['browserSync'], function() {
       .pipe(gulpif(!isProd, sourcemaps.write('./')))
       .pipe(buffer())
       .pipe(gulp.dest(config.scripts.dest))
-      // .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
+      .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
   }
 });
 
-gulp.task('default', ['styles', 'bundle:js', 'watch'], function() {
+gulp.task('default', ['styles', 'watch', 'bundle:js'], function() {
 //Start server.
   server();
 });
