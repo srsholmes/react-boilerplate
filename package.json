@@ -42,6 +42,8 @@
     "bluebird": "^2.9.30",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "reflux-core": "^0.3.0",
+    "reflux-promise": "^1.0.1",
     "whatwg-fetch": "^0.9.0"
   }
 }
