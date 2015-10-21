@@ -27,7 +27,7 @@
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^1.2.0",
     "http-server": "^0.8.0",
-    "livereactload": "^2.0.1",
+    "livereactload": "^2.0.4",
     "morgan": "^1.6.1",
     "react-proxy": "^1.1.1",
     "react-router": "^1.0.0-rc1",

@@ -27,7 +27,7 @@ var isProd = process.env.NODE_ENV === "production"
 var bundler = browserify({
   entries:      [config.sourceDir + 'js/app.js'],
   transform:    babelify.configure({stage: 0}),
-  // plugin:       [isProd ? [] : [ lrload ]],
+  plugin:       [isProd ? [] : [ lrload ]],
   debug:        !isProd,
   cache:        {},
   packageCache: {},
@@ -81,7 +81,7 @@ gulp.task('watch', ['browserSync'], function() {
       .pipe(gulpif(!isProd, sourcemaps.write('./')))
       .pipe(buffer())
       .pipe(gulp.dest(config.scripts.dest))
-      .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
+      // .pipe(gulpif(browserSync.active, browserSync.reload({ stream: true, once: true })));
   }
 });
 
