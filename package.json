@@ -7,7 +7,7 @@
     "start": "./node_modules/gulp/bin/gulp.js default",
     "serve": "forever start ./node_modules/http-server/bin/http-server -p 80 -d false",
     "build": "NODE_ENV=production ./node_modules/gulp/bin/gulp.js prod",
-    "prod": "./node_modules/gulp/bin/gulp.js prod && npm run serve"
+    "prod": "NODE_ENV=production ./node_modules/gulp/bin/gulp.js prod && npm run serve"
   },
   "author": "Simon Holmes",
   "devDependencies": {
