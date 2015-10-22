@@ -30,14 +30,13 @@ var bundler = browserify({
   plugin:       isProd ? [] : [ lrload ],
   debug:        !isProd,
   cache:        {},
-  packageCache: {},
-  fullPaths:    !isProd
+  packageCache: {}
 });
 
 gulp.task('bundle:js', function() {
   bundler.bundle()
-          .pipe(source('main.js'))
-          .pipe(gulp.dest(config.scripts.dest))
+    .pipe(source('main.js'))
+    .pipe(gulp.dest(config.scripts.dest))
 });
 
 

@@ -1,11 +1,14 @@
-// require('babelify/polyfill');
-import 'whatwg-fetch';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import configureStore from './store/configureStore';
 
-let React = require('react');
-let ReactDOM = require('react-dom');
-//Needed for React Developer Tools
-window.React = React;
+const store = configureStore();
 
-import { App } from './components';
-
-ReactDOM.render(<App/>, document.querySelector('div[app]'));
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector('[app]')
+);
