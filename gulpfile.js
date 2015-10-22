@@ -30,7 +30,8 @@ var bundler = browserify({
   plugin:       isProd ? [] : [ lrload ],
   debug:        !isProd,
   cache:        {},
-  packageCache: {}
+  packageCache: {},
+  fullPaths: false
 });
 
 gulp.task('bundle:js', function() {
