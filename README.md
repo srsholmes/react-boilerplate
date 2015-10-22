@@ -15,7 +15,3 @@ Other static assets in `public` folder.
 1. Clone the repo on your server from `git@github.com:srsholmes/react-boilerplate.git`
 2. Run `npm install` from the root directory
 3. Run `npm run prod` 
-
-
-###TODO:
-Get hot reloading working with reflux. 
