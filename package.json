@@ -39,10 +39,14 @@
   },
   "dependencies": {
     "bluebird": "^2.9.30",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
+    "history": "^1.17.0",
+    "moment": "^2.11.1",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
     "react-redux": "^4.0.0",
-    "redux": "^3.0.0",
+    "react-router": "^1.0.0",
+    "react-router-redux": "^2.1.0",
+    "redux": "^3.0.4",
     "redux-logger": "^2.0.4",
     "whatwg-fetch": "^0.9.0"
   }
