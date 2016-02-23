@@ -14,6 +14,7 @@ var gulp         = require('gulp'),
     uglify       = require('gulp-uglify'),
     browserSync  = require('browser-sync'),
     lrload       = require('livereactload'),
+    envify       = require("envify"),
     buffer       = require('vinyl-buffer'),
     uglifyify    = require('uglifyify'),
     //Server
@@ -26,7 +27,7 @@ var isProd = process.env.NODE_ENV === "production"
 
 var bundler = browserify({
   entries:      [config.sourceDir + 'js/app.js'],
-  transform:    babelify.configure({stage: 0}),
+  transform:    [ [babelify, {}], [envify, {}] ],
   plugin:       isProd ? [] : [ lrload ],
   debug:        !isProd,
   cache:        {},
