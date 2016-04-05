@@ -1,9 +1,6 @@
 import React, { PropTypes } from 'react';
-
 const propTypes = {};
-
 const defaultProps = {};
-
 class Foo extends React.Component {
   constructor(props) {
     super(props);

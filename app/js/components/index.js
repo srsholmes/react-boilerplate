@@ -1,2 +1,2 @@
-export { default as Component } from './Component.jsx';
-export { default as Counter } from './Counter.jsx';
+export { ReactComponent } from './ReactComponent.jsx';
+export { Counter } from './Counter.jsx';
