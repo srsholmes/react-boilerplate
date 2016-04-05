@@ -1,9 +1,10 @@
 module.exports = function(config) {
   config.set({
     basePath: '',
-    frameworks: ['browserify', 'jasmine'],
+    frameworks: ['browserify', 'tap'],
     files: [
-      'test/**/*.js'
+      'test/unit/**/*.js',
+      'test/unit/**/*.spec.js?(x)'
     ],
     preprocessors: {
       'src/**/*.js': ['babel', 'browserify'],
@@ -11,14 +12,19 @@ module.exports = function(config) {
     },
     babelPreprocessor: {
       options: {
-        presets: ['airbnb']
+        presets: ['airbnb', 'es2015', 'react', 'stage-0'],
+        plugins: ["transform-decorators-legacy"]
       }
     },
     browserify: {
       debug: true,
       transform: [
-        ['babelify', { presets: ['airbnb'] }]
+        ['babelify', {
+          presets: ['airbnb', 'es2015', 'react', 'stage-0'],
+          plugins: ["transform-decorators-legacy"]
+        }]
       ],
+      plugin: ['proxyquireify/plugin'],
       configure: function(bundle) {
         bundle.on('prebundle', function() {
           bundle.external('react/lib/ReactContext');
@@ -32,6 +38,6 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     browsers: ['Chrome'],
-    singleRun: false,
+    singleRun: false
   })
 };
